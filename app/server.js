@@ -35,7 +35,7 @@ let databaseName = "my-db";
 app.post('/update-profile', function (req, res) {
   let userObj = req.body;
 
-  MongoClient.connect(mongoUrlLocal, mongoClientOptions, function (err, client) {
+  MongoClient.connect(mongoUrlDocker, mongoClientOptions, function (err, client) {
     if (err) throw err;
 
     let db = client.db(databaseName);
@@ -75,6 +75,6 @@ app.get('/get-profile', function (req, res) {
   });
 });
 
-app.listen(3000, function () {
+app.listen(3000, '0.0.0.0', function () {
   console.log("app listening on port 3000!");
 });
